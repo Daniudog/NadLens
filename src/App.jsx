@@ -28,7 +28,11 @@ import ShareCard       from './components/ShareCard.jsx'
 import ActivityFeed    from './components/ActivityFeed.jsx'
 import AlertsSystem    from './components/AlertsSystem.jsx'
 import ErrorBoundary   from './components/ErrorBoundary.jsx'
-import MONPriceTicker  from './components/MONPriceTicker.jsx'
+import MONPriceTicker     from './components/MONPriceTicker.jsx'
+import NetworkStatsPage  from './components/NetworkStatsPage.jsx'
+import NewsPage          from './components/NewsPage.jsx'
+import PortfolioPage     from './components/PortfolioPage.jsx'
+import ComparisonPage    from './components/ComparisonPage.jsx'
 
 // ── OVERVIEW ─────────────────────────────────────────────────────────────────
 function OverviewPage({ chain }) {
@@ -188,6 +192,10 @@ const PAGE_META = {
   feed:        { title: 'Live Feed',     sub: 'Real-time transaction feed from Monad blocks',    src: 'rpc' },
   alerts:      { title: 'Alerts',        sub: 'Browser notifications for wallet activity',       src: 'rpc' },
   pnl:         { title: 'P&L Tracker',    sub: 'Wallet profit & loss — MON in/out, net flow, activity',src: 'rpc' },
+  network:     { title: 'Network Stats',   sub: 'Unique wallets, contracts deployed, tx breakdown',     src: 'rpc' },
+  news:        { title: 'News & Links',    sub: 'Monad ecosystem updates and official resources',        src: 'rpc' },
+  portfolio:   { title: 'Portfolio',       sub: 'Track multiple wallets — aggregate balance and stats',   src: 'rpc' },
+  compare:     { title: 'Chain Compare',   sub: 'Monad vs Ethereum, Solana, Arbitrum and more',           src: 'rpc' },
   wallet:      { title: 'Wallet',        sub: 'Inspect any Monad address — full on-chain data',  src: 'rpc' },
   watchlist:   { title: 'Watchlist',     sub: 'Track & tag wallets — saved in your browser',     src: 'rpc' },
 }
@@ -219,7 +227,7 @@ export default function App() {
 
   // Keyboard navigation — only when not focused on an input
   useEffect(() => {
-    const PAGE_ORDER = ['overview','blocks','charts','execution','ecosystem','dex','yields','stables','fees','tokens','leaderboard','feed','pnl','alerts','wallet','watchlist']
+    const PAGE_ORDER = ['overview','blocks','charts','execution','network','ecosystem','dex','yields','stables','fees','tokens','leaderboard','feed','pnl','alerts','wallet','portfolio','watchlist','compare','news']
     function onKeyDown(e) {
       const tag = document.activeElement?.tagName
       if (tag === 'INPUT' || tag === 'TEXTAREA') return
@@ -259,6 +267,10 @@ export default function App() {
       case 'leaderboard': return <LeaderboardPage />
       case 'feed':        return <ActivityFeed />
       case 'pnl':         return <PnLPage />
+      case 'network':     return <NetworkStatsPage />
+      case 'news':        return <NewsPage />
+      case 'portfolio':   return <PortfolioPage />
+      case 'compare':     return <ComparisonPage />
       case 'alerts':      return <AlertsSystem />
       case 'wallet':      return <WalletPage prefillAddress={walletPrefill} />
       case 'watchlist':   return <WatchlistPage />

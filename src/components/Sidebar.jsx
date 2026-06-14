@@ -1,4 +1,4 @@
-import { Activity, Blocks, Search, BarChart2, Globe, TrendingUp, Layers, Eye, Cpu, Trophy, Coins, Bell, DollarSign, Zap, ReceiptText, LineChart } from 'lucide-react'
+import { Activity, Blocks, Search, BarChart2, Globe, TrendingUp, Layers, Eye, Cpu, Trophy, Coins, Bell, DollarSign, Zap, ReceiptText, LineChart, Wifi, Newspaper, PieChart, GitCompare } from 'lucide-react'
 
 const NAV_GROUPS = [
   {
@@ -8,6 +8,7 @@ const NAV_GROUPS = [
       { id: 'blocks',    label: 'Blocks',      icon: Blocks },
       { id: 'charts',    label: 'Live Charts', icon: BarChart2 },
       { id: 'execution', label: 'Execution',   icon: Cpu },
+      { id: 'network',   label: 'Network Stats',icon: Wifi },
     ],
   },
   {
@@ -34,7 +35,15 @@ const NAV_GROUPS = [
     label: 'Wallets',
     items: [
       { id: 'wallet',    label: 'Wallet',      icon: Search },
+      { id: 'portfolio', label: 'Portfolio',   icon: PieChart },
       { id: 'watchlist', label: 'Watchlist',   icon: Eye },
+    ],
+  },
+  {
+    label: 'Resources',
+    items: [
+      { id: 'compare',   label: 'Chain Compare', icon: GitCompare },
+      { id: 'news',      label: 'News & Links',  icon: Newspaper },
     ],
   },
 ]

@@ -7,7 +7,6 @@ async function fetchMONPrice() {
   try {
     const res = await fetch(
       'https://api.coingecko.com/api/v3/simple/price?ids=monad&vs_currencies=usd&include_24hr_change=true&include_market_cap=true&include_24hr_vol=true',
-      { signal: AbortSignal.timeout(6000) }
     )
     if (res.ok) {
       const data = await res.json()
@@ -21,7 +20,7 @@ async function fetchMONPrice() {
   } catch {}
   // Fallback: DefiLlama (no rate limit, slightly delayed)
   try {
-    const res = await fetch('https://coins.llama.fi/prices/current/coingecko:monad', { signal: AbortSignal.timeout(6000) })
+    const res = await Promise.race([fetch('https://coins.llama.fi/prices/current/coingecko:monad'), timeout(6000)])
     if (res.ok) {
       const data = await res.json()
       const entry = Object.values(data?.coins || {})[0]

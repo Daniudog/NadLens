@@ -1,8 +1,7 @@
 import { useState, useCallback } from 'react'
 import { Search, TrendingUp, TrendingDown, ArrowUp, ArrowDown, ExternalLink, Info, RefreshCw } from 'lucide-react'
 import { shortAddress, formatTime, weiToMon } from '../lib/monad.js'
-import { getPrimaryName } from '../lib/nns.js'
-import { resolveNadName } from '../lib/nns.js'
+import { getPrimaryName, resolveNadName } from '../lib/nns.js'
 import { classifyWallet } from '../lib/whales.js'
 import Section from './Section.jsx'
 
@@ -20,15 +19,16 @@ async function rpc(method, params = []) {
 }
 
 // Scan recent blocks for all txs involving this address
-async function scanWalletActivity(address, blockWindow = 200) {
+async function scanWalletActivity(address, blockWindow = 500) {
   const latestHex = await rpc('eth_blockNumber')
   const latest = parseInt(latestHex, 16)
-  const from = Math.max(0, latest - blockWindow)
+  const fromBlock = Math.max(0, latest - blockWindow)
+  const from = fromBlock
 
   const txs = []
   // Batch requests for speed
   const BATCH = 20
-  for (let b = latest; b >= from && txs.length < 200; b -= BATCH) {
+  for (let b = latest; b >= from && txs.length < 300; b -= BATCH) {
     const batchReqs = []
     for (let i = 0; i < BATCH && b - i >= from; i++) {
       batchReqs.push({

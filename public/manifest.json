@@ -1,0 +1,20 @@
+{
+  "name": "NadLens — Monad Analytics",
+  "short_name": "NadLens",
+  "description": "Real-time on-chain analytics for Monad mainnet",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#07050F",
+  "theme_color": "#836EF9",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["finance", "productivity"],
+  "screenshots": []
+}
