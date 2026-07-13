@@ -1,4 +1,5 @@
-What's inside
+What's inside?
+
 Signature feature — the heartbeat bar at the top of every page. An animated ECG-style canvas that draws Monad's live TPS as a waveform in real-time. Nobody else has this. It makes Monad's speed visceral the moment you land on the page.
 
 Overview — 6 live stat cards (TPS, block number, txns, gas price, utilization, block time) + TPS area chart + gas utilization bar chart + latest block detail panel
